@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html >
+
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<!--link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"-->
+  
+</head>
+
+<style>
+h1 {text-align: center;}
+img {
+  border: 5px solid #555;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+body {
+  background-color: #ADD8E6;
+}
+
+.temp123
+{
+margin: 0 auto;
+margin-left: auto;
+margin-right: auto;
+text-align:center;
+}
+
+.footer{ 
+       position: fixed;     
+       text-align: center;    
+       bottom: 0px; 
+       width: 100%;
+   }  
+</style>
+
+<script>
+function showImage() {
+    document.getElementById('image').style.visibility="visible";
+    document.getElementById('image2').style.visibility="visible";
+    document.getElementById('image3').style.visibility="visible";
+}  
+</script>
+
+<body>
+ <div class="login">
+    <center><img src="https://lh3.googleusercontent.com/proxy/c4Dyyvri4WlUaMJgyr3z4g_cmUCixyUgjKbmD4cNjDVLs3QvLE6-qhsb1ixyV2Ahsi36Q4zld1dx4iHjvTFvTT9R4MeIysxKaJsOs-lzXalZkmbiw5E0jZBfWgZKjw" width="300" height="200"> </center>
+	<h1><b><u>Twitter Sentiment Analysis</u></b></h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('keyword')}}"method="post">
+    <center>
+        <b><label for="keyword" style="color:blue;">Twitter Handle @</label></b>
+    	<input type="text" name="keyword" placeholder="word" required="required" />
+                
+        <button type="submit" class="btn btn-primary btn-block btn-large"  >Submit</button>
+    </center>
+
+   <br>
+   <br>
+   
+   <b><u>{{Top_Five_Tweets}}</u></b>
+   {% for s in prediction %}
+        <p>{{s}}<p>
+   {% endfor %}
+   <br>
+   <button type="submit" class="btn btn-primary btn-block btn-large" onclick="showImage();" >Display plots</button>
+   <br></br>
+   <b><u>{{Word_cloud}}</u></b>
+   <br></br>
+   <img src="data:image/jpeg;base64,{{ plot }}" id="image" width="500" height="400" style="visibility:hidden" /> <!--style="visibility:hidden"-->
+   <br></br>
+   <b><u>{{polatiry_plot}}</u></b>
+   <br></br>
+   <img src="data:image/png;base64,{{ plot_polarity }}" id="image2" width="500" height="400" style="visibility:hidden" /> <!--style="visibility:hidden"-->
+   <br></br>
+   <b><u>{{Sentiment}}</u></b>
+   <br></br>
+   <img src="data:image/png;base64,{{ plot_sentiment }}" id="image3" width="500" height="400" style="visibility:hidden" /> <!--style="visibility:hidden"-->
+
+   <div class="footer">Created By: Jayesh Kamat</div>
+</div>
+</form>
+ </div>
+
+
+</body>
+</html>
+
+
