@@ -168,12 +168,12 @@ class plotting():
 
         
 #for testing purpose
-if __name__ == '__main__':
-    
-    wrd=keyword.key("who")
-    cld=plotting.show_wordcloud(wrd['tweets'])
-    plotting.sentiment(wrd)
-    plotting.PolarityAndSubjectivity(wrd)
+#if __name__ == '__main__':
+#    
+#    wrd=keyword.key("who")
+#    cld=plotting.show_wordcloud(wrd['tweets'])
+#    plotting.sentiment(wrd)
+#    plotting.PolarityAndSubjectivity(wrd)
     
 
 
