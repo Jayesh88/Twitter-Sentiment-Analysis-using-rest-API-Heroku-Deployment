@@ -160,7 +160,7 @@ class plotting():
             plt.ylabel('Subjectivity', fontsize=10)
        
         img = BytesIO()
-        plt.savefig(img, format='png')
+        plt.savefig(img, format='jpeg')
         plt.show()
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue())
@@ -168,12 +168,12 @@ class plotting():
 
         
 #for testing purpose
-#if __name__ == '__main__':
-#    
-#    wrd=keyword.key("who")
-#    cld=plotting.show_wordcloud(wrd['tweets'])
-#    plotting.sentiment(wrd)
-#    plotting.PolarityAndSubjectivity(wrd)
+if __name__ == '__main__':
+    
+    wrd=keyword.key("who")
+    cld=plotting.show_wordcloud(wrd['tweets'])
+    plotting.sentiment(wrd)
+    plotting.PolarityAndSubjectivity(wrd)
     
 
 
