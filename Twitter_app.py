@@ -24,9 +24,9 @@ def keyword():
     val=request.form["keyword"]
     word=Twitter_Sentiment_Analysis.keyword.key(val)
     
-    
-    word_cld=Twitter_Sentiment_Analysis.plotting.show_wordcloud(word['tweets'])
     polarity=Twitter_Sentiment_Analysis.plotting.PolarityAndSubjectivity(word)
+    word_cld=Twitter_Sentiment_Analysis.plotting.show_wordcloud(word['tweets'])
+    
     negative_positive_plot=Twitter_Sentiment_Analysis.plotting.sentiment(word)
     
     
