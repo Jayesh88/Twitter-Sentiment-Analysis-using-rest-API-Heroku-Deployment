@@ -118,7 +118,7 @@ class plotting():
     
         plt.imshow(wd,interpolation='bilinear')
         wd.to_image().save(img, 'JPEG')
-        plt.show()
+        #plt.show()
         img.seek(0)
         plotwrd = base64.b64encode(img.getvalue())
         return plotwrd.decode('utf-8')
@@ -140,7 +140,7 @@ class plotting():
         sns.catplot(x="sentiments", kind="count", palette="Blues_d", data=dd)
         img = BytesIO()
         plt.savefig(img, format='png')
-        plt.show()
+        #plt.show()
         img.seek(0) 
         plotsenti = base64.b64encode(img.getvalue())
         return plotsenti.decode('utf-8')
@@ -160,8 +160,8 @@ class plotting():
             plt.ylabel('Subjectivity', fontsize=10)
        
         img = BytesIO()
-        plt.savefig(img, format='jpeg')
-        plt.show()
+        plt.savefig(img, format='JPEG')
+        #plt.show()
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue())
         return plot_url.decode('utf-8')
