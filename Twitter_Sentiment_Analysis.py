@@ -143,6 +143,7 @@ class plotting():
         #plt.show()
         img.seek(0) 
         plotsenti = base64.b64encode(img.getvalue())
+        plt.show()
         return plotsenti.decode('utf-8')
         
 
@@ -159,11 +160,12 @@ class plotting():
             plt.xlabel('Polarity', fontsize=15)
             plt.ylabel('Subjectivity', fontsize=10)
        
-        img = BytesIO()
-        plt.savefig(img, format='JPEG')
+        img2 = BytesIO()
+        plt.savefig(img2, format='jpeg',dpi=500)
         #plt.show()
-        img.seek(0)
-        plot_url = base64.b64encode(img.getvalue())
+        img2.seek(0)
+        plot_url = base64.b64encode(img2.getvalue())
+        plt.show()
         return plot_url.decode('utf-8')
 
         
