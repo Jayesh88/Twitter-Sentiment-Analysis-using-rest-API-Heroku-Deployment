@@ -120,8 +120,8 @@ class plotting():
         wd.to_image().save(img, 'JPEG')
         plt.show()
         img.seek(0)
-        plot_url = base64.b64encode(img.getvalue())
-        return plot_url.decode('utf-8')
+        plotwrd = base64.b64encode(img.getvalue())
+        return plotwrd.decode('utf-8')
     
     def sentiment(wrd):
         #df=self.tweets_to_data_frame()
@@ -142,8 +142,8 @@ class plotting():
         plt.savefig(img, format='png')
         plt.show()
         img.seek(0) 
-        plot_url = base64.b64encode(img.getvalue())
-        return plot_url.decode('utf-8')
+        plotsenti = base64.b64encode(img.getvalue())
+        return plotsenti.decode('utf-8')
         
 
     def PolarityAndSubjectivity(df):
