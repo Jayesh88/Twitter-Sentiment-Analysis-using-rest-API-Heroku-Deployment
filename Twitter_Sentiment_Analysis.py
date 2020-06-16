@@ -115,12 +115,13 @@ class plotting():
     
         
         plt.axis('off')
-    
+        #plt.figure(0)
         plt.imshow(wd,interpolation='bilinear')
         wd.to_image().save(img, 'JPEG')
         #plt.show()
         img.seek(0)
         plotwrd = base64.b64encode(img.getvalue())
+        plt.close()
         return plotwrd.decode('utf-8')
     
     def sentiment(wrd):
@@ -138,34 +139,34 @@ class plotting():
                 data.append(strng)
         dd=pd.DataFrame(data,columns=["sentiments"])
         sns.catplot(x="sentiments", kind="count", palette="Blues_d", data=dd)
+        #plt.figure(1)
         img = BytesIO()
         plt.savefig(img, format='png')
         #plt.show()
         img.seek(0) 
         plotsenti = base64.b64encode(img.getvalue())
-        plt.show()
+        plt.close()
         return plotsenti.decode('utf-8')
         
 
     def PolarityAndSubjectivity(df):
+        
         plt.rcParams['figure.figsize'] = [10, 8]
         
         for index, tweets in enumerate(df.index):
             x = df.polarity.loc[tweets]
             y = df.subjectivity.loc[tweets]
             plt.scatter(x, y, color='Red')
- 
- 
             plt.title('Sentiment Analysis', fontsize = 20)
             plt.xlabel('Polarity', fontsize=15)
             plt.ylabel('Subjectivity', fontsize=10)
-       
+        #plt.figure(2)
         img2 = BytesIO()
+        plt.tight_layout()
         plt.savefig(img2, format='jpeg',dpi=500)
-        #plt.show()
         img2.seek(0)
         plot_url = base64.b64encode(img2.getvalue())
-        plt.show()
+        
         return plot_url.decode('utf-8')
 
         
@@ -175,7 +176,8 @@ if __name__ == '__main__':
     wrd=keyword.key("who")
     cld=plotting.show_wordcloud(wrd['tweets'])
     plotting.sentiment(wrd)
+    #plt.close()
     plotting.PolarityAndSubjectivity(wrd)
     
-
+    
 
